@@ -1,0 +1,47 @@
+<div style={{
+  border: '2px solid #e6e6e6', // 边框：1像素、实线、浅灰色
+  padding: '16px',            // 内边距：内容与边框的距离
+  borderRadius: '20px',        // 可选：圆角（若要平角设为 0）
+  backgroundColor: '#f9f9f9',
+  fontSize: '14px',
+  lineHeight: '1.6',
+  color: "back",
+}}>
+❗项目接口，目前只支持http post 一种请求方式，且指定的body Content-Type为:application/json。请特别注意，所有的请求参数通过body的json格式传递，其他传递参数的方式无效。
+</div>
+
+项目接口，接口参数分为两部分：系统参数和业务参数。
+
+- **系统参数**: 每个 API 调用都需要系统参数
+- **业务参数**: 特定于各个 API 调用或端点的参数
+
+### 系统参数
+| 参数 | 类型 | 描述 | 示例 | 是否必须 |
+| :----- | :------ | :----- |:----- | :------ |
+| timestamp   | sign     | 当前请求时间戳，单位毫秒   |1687846491667   | 是     |
+| nonce   | string     | 6 位随机字符串   |24abxo   | 是     |
+| sign   | string     | 请求的数字签名, 防止参数被篡改, 签名规则参考以下[签名规则](/docs/API参考/签名规则)章节 |eb881023045a167d3e4a7378bc212f53   | 是     |
+### 业务参数
+除了以上三个参数外，其他参数是业务参数，以下是一个请求示例。
+
+### 请求示例
+### 客户端
+**使用 Postman 示例:**
+![图片描述](/docs/image/requestDemo.png)
+**CURL**
+  ```bash
+  curl --location --request POST 'https://xx.xx.xx/api/v1/payout' \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+      "pid": 1394705669275648,
+      "currency": "195@195",
+      "address": "TXsmKpEuW7qWnXzJLGP9eDLvWPR2GRn1FS",
+      "amount": "0.1",
+      "remark": "payout",
+      "third_party_id": "1828fc39daaf4d318777e1211c055edf",
+      "callback_url": "http://xxx.com/payout/callback",
+      "nonce": "rR7ngZ",
+      "timestamp": 1709708726668,
+      "sign": "e95ba1a7e9bcadb92d9c3405a932715d"
+  }'
+  ```

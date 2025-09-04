@@ -1,0 +1,77 @@
+查询提币订单信息
+### 接入API
+##### POST /api/v1/payout/query
+### 请求
+#### 请求参数
+| 名称      | 类型            | 是否必须 | 描述         |
+| :-------- | :-------------- | :------- | :----------- |
+| pid       | integer(int64)   | 是       | 项目编号     |
+| cid       | integer(int64)   | 是       | 订单编号     |
+| nonce     | string          | 是       | 6位随机字符串 |
+| timestamp | integer(int64)   | 是       | 时间戳       |
+| sign      | string          | 是       | 签名         |
+##### 请求示例
+```bash
+{
+  "pid": 1382528827416576,
+  "cid": 1382626461605888,
+  "nonce": "sw7kv5",
+  "timestamp": 1687853722065,
+  "sign": "af825ddb839e6796d62977caf18d3394"
+}
+```
+### 返回
+#### 返回数据
+| 名称 | 类型   | 描述     |
+| :--- | :----- | :------- |
+| code | string | 返回码   |
+| msg  | string | 返回信息 |
+| data | object | 返回数据 |
+### Response```data```Object
+| 名称            | 类型            | 描述                                           |
+| :-------------- | :-------------- | :--------------------------------------------- |
+| pid             | integer(int64)   | 项目编号                                       |
+| chain_id        | string          | 链编号                                         |
+| token_id        | string          | 代币编号                                       |
+| currency        | string          | 币种标识                                       |
+| address         | string          | 地址                                           |
+| amount          | string          | 金额                                           |
+| status          | integer(int32)   | 状态                                           |
+| third_party_id  | string          | 调用方业务编号                                 |
+| remark          | string          | 备注                                           |
+| memo            | string          | memo、tag等上链信息，仅Ton、Xrp支持            |
+| txid            | string          | 交易hash                                       |
+| block_height    | string          | 区块高度                                       |
+| block_time      | integer(int64)   | 区块时间                                       |
+### Response```status```Object
+| 状态(status) | 描述     |
+| :----------- | :------- |
+| 0            | 待审批   |
+| 3            | 审批取消 |
+| 4            | 审批驳回 |
+| 5            | 待签名   |
+| 1            | 签名通过 |
+| 2            | 签名驳回 |
+| 6            | 交易成功 |
+| 7            | 交易失败 |
+##### 返回示例
+```bash
+{
+  "code": "00000",
+  "msg": "ok",
+  "data": {
+    "pid": 1382528827416576,
+    "address": "TXsmKpEuW7qWnXzJLGP9eDLvWPR2GRn1FS",
+    "chain_id": "195",
+    "token_id": "195",
+    "currency": "TRX",
+    "amount": "1.1",
+    "third_party_id": "1e0fb3a0a9454ad8928d26b592e8b3c7",
+    "remark": "payout",
+    "status": 0,
+    "txid": "6dd05b0972075542219a3fcc116c58feaf9480f1f698cc46c4367ded83955cfd",
+    "block_height": "34527604",
+    "block_time": 1686814482000
+  }
+}
+```

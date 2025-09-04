@@ -1,0 +1,78 @@
+##### 批量创建新的收款地址
+### 接入API
+##### POST /api/v1/batch/address/create
+### 请求
+#### 请求参数
+| 名称         | 类型            | 是否必须 | 描述                                                                 |
+| :----------- | :-------------- | :------- | :------------------------------------------------------------------- |
+| pid          | integer(int64)   | 是       | 项目编号                                                             |
+| chain_id     | string          | 是       | 链编号chain_id                                                       |
+| alias        | string          | 否       | 显示名称，如果填写该值，长度限制在1-40个字符                         |
+| callback_url | string          | 否       | 回调地址,该地址接收资金时会向对应的callback_url发起交易回调通知,回调详情参考 地址充值通知 |
+| number       | string          | 是       | 创建地址的数量值，在1-100之间，包含100                               |
+| nonce        | string          | 是       | 6位随机字符串                                                        |
+| timestamp    | integer(int64)   | 是       | 时间戳                                                               |
+| sign         | string          | 是       | 签名串                                                               |
+##### 请求示例
+```bash
+{
+  "pid": 1382528827416576,
+  "callback_url": "http://xxxx.com/deposit/callback",
+  "chain_id": "60",
+  "alias": "cc",
+  "number": 10,
+  "nonce": "ubqso3",
+  "timestamp": 1687850657960,
+  "sign": "f5be13fdd8c6f63951ca4427359457cb"
+}
+```
+### 返回
+#### 返回结果
+| 名称 | 类型   | 描述     |
+| :--- | :----- | :------- |
+| code | string | 返回码   |
+| msg  | string | 返回信息 |
+| data | Array | 返回数据 |
+### 返回```data```对象
+| 名称 | 类型   | 描述     |
+| :--- | :----- | :------- |
+| address | string | 地址  |
+##### 返回示例
+```bash
+{
+  "code": "00000",
+  "msg": "ok",
+  "data": [
+    {
+        "address": "THnZQewzSD8XdxHaWZWcYaJuEhdGHexuSn"
+    },
+    {
+        "address": "TPS1VmkkEFgjJyFCiSkk8eSHJBNi69WYCR"
+    },
+    {
+        "address": "TUzVX6NSkgq7ZwznXdfDSp97B6mQW2e6T8"
+    },
+    {
+        "address": "TK8an5omq7engcFWxj528tuNkZYA6rSd5h"
+    },
+    {
+        "address": "TRiimhegJiHU2T7CQpg4xt3K6XU3WenRG7"
+    },
+    {
+        "address": "TRXamqVuW5Csh3HvoiLcA4X9Vd2xmMH1Kj"
+    },
+    {
+        "address": "TS6b9qG3qzTkjvbCN4uWbsmBDxXGks88YF"
+    },
+    {
+        "address": "TSPpPCFSqrduYye5TmVe6soJC4SD7YWVhm"
+    },
+    {
+        "address": "TLxRaUpZdi8BCM33AgbtEhxcxed82rwCK5"
+    },
+    {
+        "address": "TYvJZxYzxUevySMECpJjgE46AHnps98NYh"
+    }
+  ]
+}
+```

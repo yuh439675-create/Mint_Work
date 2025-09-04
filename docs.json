@@ -1,0 +1,159 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "maple",
+  "name": "Example Co.",
+  "description": "Example Co. is a company that provides example content and placeholder text.",
+  "colors": {
+    "primary": "#3B82F6",
+    "light": "#F8FAFC",
+    "dark": "#0F172A"
+  },
+
+
+
+
+  "navigation": {
+  "dropdowns": [
+    {
+      "dropdown": "文档",
+      "icon": "book",
+      "description": "产品使用文档",
+      "groups": [
+        {
+          "group": "概述",
+          "pages": [
+            "/docs/doc/快速开始",       
+            "/docs/doc/功能和应用场景", 
+            "/docs/doc/服务集成"        
+          ]
+        },
+        {
+          "group": "功能描述",
+          "pages": [
+            "/docs/doc/用户充值",       
+            "/docs/doc/提币付款"        
+          ]
+        }
+      ]
+    },
+    {
+      "dropdown": "API参考",
+      "icon": "image",
+      "description": "API接口说明",
+      "groups": [
+        {
+          "group": "通用接口格式",
+          "pages": [
+            "/docs/API参考/请求说明",       
+            "/docs/API参考/响应说明",        
+            "/docs/API参考/签名规则", 
+            "/docs/API参考/返回码",  
+            "/docs/API参考/币种码"      
+          ]
+        },
+        {
+          "group": "项目",
+          "pages": [
+            "/docs/API参考/查询项目币种",
+            "/docs/API参考/查询交易记录"     
+          ]
+        },
+        {
+          "group": "地址充值",
+          "pages": [
+            "/docs/API参考/创建地址",
+            "/docs/API参考/批量创建地址",     
+            "/docs/API参考/校验地址是否存在",
+            "/docs/API参考/更新地址信息",
+            "/docs/API参考/地址充值通知"
+          ]
+        },
+        {
+          "group": "提币",
+          "pages": [
+            "/docs/API参考/发起提币申请",
+            "/docs/API参考/校验地址合法性",
+            "/docs/API参考/查询提币信息",
+            "/docs/API参考/提币通知"     
+          ]
+        }
+      ]
+    },
+    {
+      "dropdown": "SDK和工具",
+      "icon": "share",
+      "description": "SDK与辅助工具",
+      "groups": [
+        {
+          "group": "SDK",
+          "pages": [
+            "/docs/SDK和工具/SDK支持"          
+          ]
+        },{
+          "group": "工具",
+          "pages": [
+            "/docs/SDK和工具/调试工具"          
+          ]
+        }
+      ]
+    },
+    {
+      "dropdown": "常见问题",
+      "icon": "bell",
+      "description": "问题解答",
+      "groups": [
+        {
+          "group": "FAQs",
+          "pages": [
+            "/docs/常见问题/地址管理",    
+            "/docs/常见问题/币种管理",   
+            "/docs/常见问题/交易管理",
+            "/docs/常见问题/API Key",  
+            "/docs/常见问题/回调"   
+          ]
+        }
+      ]
+    }
+  ]
+},
+
+
+
+
+
+  "logo": {
+    "light": "/docs/image/9efdd6e5d6dc4f0da53fc35c4fa3f6b2_2208256592.png",
+    "dark": "/docs/image/9efdd6e5d6dc4f0da53fc35c4fa3f6b2_2208256592.png",
+    "href": "http://117.72.87.70/login/"
+  },
+
+  "footer": {
+    "socials": {
+      "x": "https://x.com/example",
+      "linkedin": "https://www.linkedin.com/company/example",
+      "github": "https://github.com/example",
+      "slack": "https://example.com/community"
+    }
+  },
+  "integrations": {
+    "ga4": {
+      "measurementId": "G-XXXXXXXXXX"
+    },
+    "koala": {
+      "publicApiKey": "pk_example_key_123"
+    },
+    "telemetry": {
+      "enabled": true
+    },
+    "cookies": {
+      "key": "example_cookie_key",
+      "value": "example_cookie_value"
+    }
+  },
+
+  "errors": {
+    "404": {
+      "redirect": true
+    }
+  }
+}
